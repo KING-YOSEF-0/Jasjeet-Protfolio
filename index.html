@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JASJEET | Lil Bro of KING_YOSEF_</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+:root{--sky:#0ea5e9;--sky2:#38bdf8;--light:#e0f2fe;--white:#fff;--dark:#0c4a6e;--text:#0f172a}
+body{background:#f0f9ff;color:var(--text);overflow-x:hidden}
+#cursor{position:fixed;width:220px;height:220px;background:radial-gradient(circle,rgba(56,189,248,.35),transparent 70%);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);border-radius:50%}
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:92%;max-width:1100px;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border:1px solid #bae6fd;padding:12px 22px;border-radius:999px;display:flex;justify-content:space-between;align-items:center;z-index:100;box-shadow:0 10px 30px rgba(14,165,233,.15)}
+.logo{font-family:'Space Grotesk';font-weight:700;font-size:22px;color:var(--dark)} .logo span{color:var(--sky)}
+nav a{margin:0 12px;text-decoration:none;color:#334155;font-weight:600;font-size:14px}
+nav a:hover{color:var(--sky)}
+.btn{background:linear-gradient(135deg,#0ea5e9,#38bdf8,#7dd3fc);color:white;padding:11px 22px;border-radius:999px;text-decoration:none;font-weight:700;border:none;cursor:pointer;box-shadow:0 8px 20px rgba(14,165,233,.35)}
+.hero{min-height:100vh;background:linear-gradient(180deg,#e0f2fe 0%,#ffffff 55%,#bae6fd 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 20px 60px;position:relative}
+.badge{display:inline-block;background:white;border:1px solid #7dd3fc;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;color:#0369a1;box-shadow:0 4px 15px rgba(0,0,0,.06)}
+.hero h1{font-family:'Space Grotesk';font-size:clamp(48px,8vw,92px);line-height:.95;margin:18px 0;color:var(--dark)} .hero h1 span{background:linear-gradient(90deg,#0284c7,#38bdf8,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{max-width:620px;margin:0 auto 28px;color:#475569;font-size:18px;line-height:1.6}
+.crown-box{margin:22px auto;background:white;border:2px solid #bae6fd;padding:14px 18px;border-radius:20px;max-width:520px;display:flex;gap:14px;align-items:center;text-align:left;box-shadow:0 15px 30px rgba(14,165,233,.15)}
+.crown{font-size:34px}
+section{max-width:1100px;margin:auto;padding:70px 20px}
+h2{font-family:'Space Grotesk';font-size:38px;color:var(--dark);text-align:center} h2 span{color:var(--sky)}
+.sub{text-align:center;color:#64748b;margin:10px 0 36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:white;border:1px solid #e0f2fe;border-radius:24px;padding:26px;transition:.3s;box-shadow:0 10px 25px rgba(14,165,233,.08)}
+.card:hover{transform:translateY(-8px) rotate(-1deg);border-color:#38bdf8}
+.card h3{margin:12px 0 8px} .card p{color:#64748b;font-size:14px;line-height:1.6}
+.icon{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#e0f2fe,#bae6fd);display:grid;place-items:center;font-size:24px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+.stat{background:linear-gradient(135deg,#0284c7,#38bdf8);color:white;padding:26px;border-radius:22px;text-align:center}
+.stat b{font-size:32px;display:block} .stat span{font-size:13px;opacity:.9}
+.filter{display:flex;gap:10px;justify-content:center;margin-bottom:24px;flex-wrap:wrap}
+.filter button{padding:9px 18px;border-radius:999px;border:1px solid #bae6fd;background:white;cursor:pointer;font-weight:700}
+.filter button.active{background:var(--sky);color:white}
+.proj{display:none} .proj.show{display:block}
+.proj img{width:100%;height:170px;object-fit:cover;border-radius:16px;background:linear-gradient(135deg,#7dd3fc,#e0f2fe)}
+.skill-bar{background:#e2e8f0;height:8px;border-radius:999px;overflow:hidden;margin:8px 0 16px}
+.skill-fill{height:100%;background:linear-gradient(90deg,#0ea5e9,#7dd3fc);border-radius:999px;width:0;transition:1s}
+.timeline{border-left:3px solid #bae6fd;padding-left:22px;margin-top:20px}
+.timeline div{margin-bottom:22px;position:relative} .timeline div:before{content:'';position:absolute;left:-30px;top:4px;width:12px;height:12px;background:#0ea5e9;border-radius:50%;border:3px solid white;box-shadow:0 0 0 3px #bae6fd}
+.contact{background:linear-gradient(135deg,#075985,#0ea5e9,#38bdf8);border-radius:30px;padding:40px;color:white;text-align:center}
+.contact input,.contact textarea{width:100%;max-width:520px;padding:13px 16px;border-radius:12px;border:none;margin:8px 0;outline:none}
+footer{text-align:center;padding:24px;color:#64748b;font-size:13px}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)} nav a{display:none}}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<nav><div class="logo">JASJEET<span>.</span></div><div><a href="#about">About</a><a href="#skills">Skills</a><a href="#work">Work</a><a href="#journey">Journey</a></div><a class="btn" href="#contact">Hire Me</a></nav>
+
+<header class="hero">
+<div>
+<div class="badge">👑 AVAILABLE FOR NEW PROJECTS • Abu Dhabi</div>
+<h1>JASJEET<br><span>Builds The Future.</span></h1>
+<p>I'm <b id="type"></b> — I turn crazy ideas into clean, fast, beautiful websites & apps. Simple. Powerful. Unforgettable.</p>
+<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a class="btn" href="#work">View My Work ↓</a><a class="btn" style="background:white;color:#0369a1" href="#contact">Let's Talk</a></div>
+<div class="crown-box"><div class="crown">👑</div><div><b>Lil Bro of KING_YOSEF_</b><br><span style="font-size:13px;color:#64748b">Legacy runs in the blood. YOSEF built the throne. JASJEET is building the empire next.</span></div></div>
+</div>
+</header>
+
+<section id="about"><h2>About <span>Me</span></h2><p class="sub">Not just a developer. A creator with royal standards.</p>
+<div class="grid"><div class="card"><div class="icon">⚡</div><h3>Fast Learner</h3><p>I learn any stack in days. If it exists on the internet, I can build it. If it doesn't, I'll invent it.</p></div><div class="card"><div class="icon">🎨</div><h3>Design First</h3><p>Clean, elegant, sky-blue vibes. No messy UI. Every pixel has a purpose.</p></div><div class="card"><div class="icon">🤖</div><h3>AI Powered</h3><p>I use AI tools like a pro — Codex, Claude, FreeLLMAPI — to ship 10x faster.</p></div></div>
+<div class="stats"><div class="stat"><b><span class="count" data-target="25">0</span>+</b><span>Projects Done</span></div><div class="stat"><b><span class="count" data-target="100">0</span>%</b><span>Client Happy</span></div><div class="stat"><b><span class="count" data-target="15">0</span>+</b><span>Technologies</span></div><div class="stat"><b><span class="count" data-target="24">0</span>/7</b><span>Grinding</span></div></div>
+</section>
+
+<section id="skills"><h2>My <span>Superpowers</span></h2><p class="sub">Hover the cards — they tilt. This is real dev flex.</p>
+<div class="grid">
+<div class="card tilt"><h3>Frontend</h3><p>HTML • CSS • JavaScript • React</p><div class="skill-bar"><div class="skill-fill" data-w="95%"></div></div><small>95% — Expert</small></div>
+<div class="card tilt"><h3>Backend</h3><p>Node.js • Python • Firebase</p><div class="skill-bar"><div class="skill-fill" data-w="85%"></div></div><small>85% — Pro</small></div>
+<div class="card tilt"><h3>AI & Tools</h3><p>ChatGPT • Codex • FreeLLMAPI • Docker</p><div class="skill-bar"><div class="skill-fill" data-w="90%"></div></div><small>90% — Elite</small></div>
+<div class="card tilt"><h3>Design</h3><p>UI/UX • Figma • Animations</p><div class="skill-bar"><div class="skill-fill" data-w="88%"></div></div><small>88% — Clean</small></div>
+</div></section>
+
+<section id="work"><h2>Selected <span>Work</span></h2><p class="sub">Click to filter. Real interactive portfolio.</p>
+<div class="filter"><button class="active" onclick="filterP('all',this)">All</button><button onclick="filterP('web',this)">Web</button><button onclick="filterP('ai',this)">AI</button><button onclick="filterP('design',this)">Design</button></div>
+<div class="grid">
+<div class="card proj show web"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600"><h3>SkyShop — E-Commerce</h3><p>Full store with cart, sky-blue theme, 2s load time. Built with HTML + JS.</p><br><a href="#" style="color:#0284c7;font-weight:700">View Project →</a></div>
+<div class="card proj show ai"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600"><h3>Yosef AI Bot</h3><p>AI chatbot using FreeLLMAPI + Groq. Answers in 0.5s, costs $0.</p><br><a href="#" style="color:#0284c7;font-weight:700">View Project →</a></div>
+<div class="card proj show design"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600"><h3>Royal Brand Kit</h3><p>Complete branding for KING_YOSEF_ — logo, colors, social kit.</p><br><a href="#" style="color:#0284c7;font-weight:700">View Project →</a></div>
+<div class="card proj show web"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600"><h3>Jasjeet.dev Portfolio</h3><p>This very site. 100% custom code, no template. You are looking at it.</p><br><a href="#" style="color:#0284c7;font-weight:700">You Are Here →</a></div>
+</div></section>
+
+<section id="journey"><h2>My <span>Journey</span></h2><div class="timeline"><div><b>2024 — Started Coding</b><p style="color:#64748b">First "Hello World" — never stopped since.</p></div><div><b>2025 — Learned AI Tools</b><p style="color:#64748b">Mastered Codex, Claude, Docker, FreeLLMAPI.</p></div><div><b>2026 — Building Empire with KING_YOSEF_</b><p style="color:#64748b">Freelancing, building products, going viral soon.</p></div></div></section>
+
+<section id="contact"><div class="contact"><h2 style="color:white">Let's Build Something <span style="color:#bae6fd">Royal</span> 👑</h2><p style="margin:12px 0 20px;opacity:.9">Lil Bro of KING_YOSEF_ — but my work speaks for itself.</p><input id="nameIn" placeholder="Your Name"><br><input placeholder="Your Email"><br><textarea rows="3" placeholder="Tell me your idea..."></textarea><br><button class="btn" style="background:white;color:#0369a1" onclick="sendMsg()">Send Message 🚀</button><p id="sent" style="margin-top:14px;font-weight:700"></p><p style="margin-top:18px;font-size:13px">📍 Abu Dhabi • 💬 DM: @KING_YOSEF_ 's Lil Bro</p></div></section>
+<footer>Made with 💙 by <b>JASJEET</b> • Lil Bro of <b>KING_YOSEF_</b> • © 2026 All Rights Reserved</footer>
+
+<script>
+const words=["a Frontend Developer","an AI Builder","a UI Designer","the Future King"];let wi=0,ci=0,del=false;
+function typeIt(){let w=words[wi];let el=document.getElementById('type');el.textContent=w.slice(0,ci);if(!del){ci++;if(ci>w.length){del=true;setTimeout(typeIt,1200);return}}else{ci--;if(ci==0){del=false;wi=(wi+1)%words.length}}setTimeout(typeIt,del?40:80)}typeIt();
+document.addEventListener('mousemove',e=>{let c=document.getElementById('cursor');c.style.left=e.clientX+'px';c.style.top=e.clientY+'px'});
+document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('mousemove',e=>{let r=card.getBoundingClientRect();let x=(e.clientX-r.left)/r.width-.5;let y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(600px) rotateY(${x*12}deg) rotateX(${-y*12}deg)`});card.addEventListener('mouseleave',()=>card.style.transform='')});
+function filterP(cat,btn){document.querySelectorAll('.filter button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.proj').forEach(p=>{p.classList.remove('show');if(cat=='all'||p.classList.contains(cat))p.classList.add('show')})}
+let obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.skill-fill').forEach(f=>f.style.width=f.dataset.w);document.querySelectorAll('.count').forEach(c=>{let t=+c.dataset.target;let cur=0;let iv=setInterval(()=>{cur+=2;if(cur>=t){cur=t;clearInterval(iv)}c.textContent=cur},20)})}})},{threshold:.3});obs.observe(document.getElementById('skills'));
+function sendMsg(){let n=document.getElementById('nameIn').value||'King';document.getElementById('sent').textContent=`Thanks ${n}! 👑 Jasjeet will reply soon. Message sent!`; }
+</script>
+</body>
+</html>

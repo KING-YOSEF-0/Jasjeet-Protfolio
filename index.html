@@ -7,27 +7,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
-:root{--sky:#0ea5e9;--sky2:#38bdf8;--light:#e0f2fe;--white:#fff;--dark:#0c4a6e;--text:#0f172a}
-body{background:#f0f9ff;color:var(--text);overflow-x:hidden}
+:root{--sky:#0ea5e9;--sky2:#38bdf8;--light:#e0f2fe;--white:#fff;--dark:#0c4a6e;--text:#0f172a;--bg:#f0f9ff;--card:#ffffff;--muted:#64748b}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;transition:.4s}
+body.dark{--bg:#020617;--card:#0f172a;--text:#e2e8f0;--muted:#94a3b8}
+body.dark .hero{background:linear-gradient(180deg,#020617 0%,#0f172a 55%,#0c4a6e 100%)}
+body.dark .card{background:#0f172a;border-color:#1e293b}
+body.dark nav{background:rgba(15,23,42,.85);border-color:#1e293b}
+body.dark .crown-box{background:#0f172a;border-color:#1e293b}
+body.dark .badge{background:#0f172a;color:#7dd3fc}
+body.dark #jarvisChat{background:#020617}
+body.dark .msg.jarvis{background:#1e293b;border-color:#334155;color:#e2e8f0}
+body.dark .jarvisInput, body.dark .jarvisQuick{background:#0f172a}
+body.dark .jarvisInput input{background:#1e293b;color:white;border-color:#334155}
+body.dark .jarvisQuick button{background:#1e293b;color:#e2e8f0;border-color:#334155}
+body.dark #jarvisBox{background:#0f172a;border-color:#1e293b}
 #cursor{position:fixed;width:220px;height:220px;background:radial-gradient(circle,rgba(56,189,248,.35),transparent 70%);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);border-radius:50%}
 nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:92%;max-width:1100px;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border:1px solid #bae6fd;padding:12px 22px;border-radius:999px;display:flex;justify-content:space-between;align-items:center;z-index:100;box-shadow:0 10px 30px rgba(14,165,233,.15)}
 .logo{font-family:'Space Grotesk';font-weight:700;font-size:22px;color:var(--dark)} .logo span{color:var(--sky)}
+body.dark .logo{color:#e2e8f0}
 nav a{margin:0 12px;text-decoration:none;color:#334155;font-weight:600;font-size:14px}
+body.dark nav a{color:#cbd5e1}
 nav a:hover{color:var(--sky)}
 .btn{background:linear-gradient(135deg,#0ea5e9,#38bdf8,#7dd3fc);color:white;padding:11px 22px;border-radius:999px;text-decoration:none;font-weight:700;border:none;cursor:pointer;box-shadow:0 8px 20px rgba(14,165,233,.35)}
 .hero{min-height:100vh;background:linear-gradient(180deg,#e0f2fe 0%,#ffffff 55%,#bae6fd 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 20px 60px;position:relative}
 .badge{display:inline-block;background:white;border:1px solid #7dd3fc;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;color:#0369a1;box-shadow:0 4px 15px rgba(0,0,0,.06)}
-.hero h1{font-family:'Space Grotesk';font-size:clamp(48px,8vw,92px);line-height:.95;margin:18px 0;color:var(--dark)} .hero h1 span{background:linear-gradient(90deg,#0284c7,#38bdf8,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{max-width:620px;margin:0 auto 28px;color:#475569;font-size:18px;line-height:1.6}
+.hero h1{font-family:'Space Grotesk';font-size:clamp(48px,8vw,92px);line-height:.95;margin:18px 0;color:var(--dark)} body.dark .hero h1{color:white} .hero h1 span{background:linear-gradient(90deg,#0284c7,#38bdf8,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{max-width:620px;margin:0 auto 28px;color:#475569;font-size:18px;line-height:1.6} body.dark .hero p{color:#cbd5e1}
 .crown-box{margin:22px auto;background:white;border:2px solid #bae6fd;padding:14px 18px;border-radius:20px;max-width:520px;display:flex;gap:14px;align-items:center;text-align:left;box-shadow:0 15px 30px rgba(14,165,233,.15)}
 .crown{font-size:34px}
 section{max-width:1100px;margin:auto;padding:70px 20px}
-h2{font-family:'Space Grotesk';font-size:38px;color:var(--dark);text-align:center} h2 span{color:var(--sky)}
-.sub{text-align:center;color:#64748b;margin:10px 0 36px}
+h2{font-family:'Space Grotesk';font-size:38px;color:var(--dark);text-align:center} body.dark h2{color:white} h2 span{color:var(--sky)}
+.sub{text-align:center;color:var(--muted);margin:10px 0 36px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.card{background:white;border:1px solid #e0f2fe;border-radius:24px;padding:26px;transition:.3s;box-shadow:0 10px 25px rgba(14,165,233,.08)}
+.card{background:var(--card);border:1px solid #e0f2fe;border-radius:24px;padding:26px;transition:.3s;box-shadow:0 10px 25px rgba(14,165,233,.08)}
 .card:hover{transform:translateY(-8px) rotate(-1deg);border-color:#38bdf8}
-.card h3{margin:12px 0 8px} .card p{color:#64748b;font-size:14px;line-height:1.6}
+.card h3{margin:12px 0 8px} .card p{color:var(--muted);font-size:14px;line-height:1.6}
 .icon{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#e0f2fe,#bae6fd);display:grid;place-items:center;font-size:24px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
 .stat{background:linear-gradient(135deg,#0284c7,#38bdf8);color:white;padding:26px;border-radius:22px;text-align:center}
@@ -43,88 +57,106 @@ h2{font-family:'Space Grotesk';font-size:38px;color:var(--dark);text-align:cente
 .timeline div{margin-bottom:22px;position:relative} .timeline div:before{content:'';position:absolute;left:-30px;top:4px;width:12px;height:12px;background:#0ea5e9;border-radius:50%;border:3px solid white;box-shadow:0 0 0 3px #bae6fd}
 .contact{background:linear-gradient(135deg,#075985,#0ea5e9,#38bdf8);border-radius:30px;padding:40px;color:white;text-align:center}
 .contact input,.contact textarea{width:100%;max-width:520px;padding:13px 16px;border-radius:12px;border:none;margin:8px 0;outline:none}
-footer{text-align:center;padding:24px;color:#64748b;font-size:13px}
-/* JARVIS */
+footer{text-align:center;padding:24px;color:var(--muted);font-size:13px}
+/* ARC REACTOR */
+.reactor{width:56px;height:56px;position:relative;flex-shrink:0}
+.reactor .ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,255,255,.7);border-top-color:transparent;animation:spin 3s linear infinite}
+.reactor .ring2{position:absolute;inset:8px;border-radius:50%;border:2px dashed rgba(255,255,255,.8);animation:spinRev 5s linear infinite}
+.reactor .core{position:absolute;inset:16px;border-radius:50%;background:radial-gradient(circle,#fff,#7dd3fc,#0284c7);box-shadow:0 0 15px #fff,0 0 30px #38bdf8;display:grid;place-items:center;font-size:14px}
+@keyframes spin{to{transform:rotate(360deg)}} @keyframes spinRev{to{transform:rotate(-360deg)}}
+.reactor.speaking .ring{animation-duration:0.6s;border-color:#fff}
+.reactor.speaking .core{animation:reactorPulse .4s infinite alternate}
+@keyframes reactorPulse{from{transform:scale(1);box-shadow:0 0 15px #fff,0 0 30px #38bdf8}to{transform:scale(1.25);box-shadow:0 0 25px #fff,0 0 50px #38bdf8}}
+.reactor.listening .core{background:radial-gradient(circle,#fff,#fca5a5,#dc2626);box-shadow:0 0 20px #ef4444,0 0 40px #ef4444}
 #jarvisBtn{position:fixed;bottom:22px;right:22px;width:68px;height:68px;border-radius:50%;border:none;background:radial-gradient(circle at 30% 30%,#7dd3fc,#0284c7);color:white;font-size:30px;cursor:pointer;z-index:1000;box-shadow:0 0 0 4px #bae6fd,0 0 30px #0ea5e9;animation:pulse 2s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 4px #bae6fd,0 0 20px #0ea5e9}50%{box-shadow:0 0 0 10px rgba(186,230,253,.4),0 0 40px #0ea5e9}100%{box-shadow:0 0 0 4px #bae6fd,0 0 20px #0ea5e9}}
-#jarvisBox{position:fixed;bottom:100px;right:20px;width:360px;max-width:92vw;height:480px;background:white;border-radius:24px;border:2px solid #bae6fd;box-shadow:0 20px 50px rgba(2,132,199,.3);z-index:1000;display:none;flex-direction:column;overflow:hidden}
+#jarvisBtn.listening{animation:none;background:radial-gradient(circle at 30% 30%,#f87171,#dc2626);box-shadow:0 0 0 6px #fecaca,0 0 40px #ef4444}
+#jarvisBox{position:fixed;bottom:100px;right:20px;width:380px;max-width:92vw;height:540px;background:white;border-radius:24px;border:2px solid #bae6fd;box-shadow:0 20px 50px rgba(2,132,199,.3);z-index:1000;display:none;flex-direction:column;overflow:hidden}
 #jarvisBox.open{display:flex}
-.jarvisHead{background:linear-gradient(135deg,#0284c7,#38bdf8);color:white;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.jarvisHead{background:linear-gradient(135deg,#0284c7,#38bdf8);color:white;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .jarvisHead b{font-family:'Space Grotesk'}
 #jarvisChat{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:#f0f9ff}
-.msg{max-width:85%;padding:10px 13px;border-radius:16px;font-size:14px;line-height:1.5}
+.msg{max-width:88%;padding:10px 13px;border-radius:16px;font-size:14px;line-height:1.5;white-space:pre-wrap}
 .msg.user{background:#0ea5e9;color:white;align-self:flex-end;border-bottom-right-radius:4px}
 .msg.jarvis{background:white;border:1px solid #bae6fd;align-self:flex-start;border-bottom-left-radius:4px}
+.msg .cursor-blink:after{content:'▍';animation:blink 0.8s infinite;color:#0ea5e9}
+@keyframes blink{50%{opacity:0}}
 .jarvisInput{display:flex;gap:8px;padding:10px;background:white;border-top:1px solid #e0f2fe}
 .jarvisInput input{flex:1;padding:11px 12px;border:1px solid #bae6fd;border-radius:999px;outline:none}
 .jarvisInput button{width:42px;height:42px;border-radius:50%;border:none;background:#0ea5e9;color:white;cursor:pointer;font-size:16px}
 .jarvisQuick{display:flex;gap:6px;padding:8px 10px;flex-wrap:wrap;background:white}
 .jarvisQuick button{font-size:11px;padding:6px 10px;border-radius:999px;border:1px solid #bae6fd;background:#f0f9ff;cursor:pointer}
+.wakeBtn{font-size:11px;padding:5px 10px;border-radius:999px;border:none;background:rgba(255,255,255,.25);color:white;cursor:pointer;font-weight:700}
+.wakeBtn.on{background:#22c55e}
+.clearBtn{font-size:11px;padding:5px 8px;border-radius:999px;border:none;background:rgba(255,255,255,.25);color:white;cursor:pointer}
+#nowPlaying{position:fixed;bottom:100px;left:20px;background:#0c4a6e;color:white;padding:10px 14px;border-radius:999px;font-size:12px;font-weight:700;z-index:1000;display:none;box-shadow:0 10px 30px rgba(0,0,0,.3)}
 @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)} nav a{display:none}}
 </style>
 </head>
 <body>
 <div id="cursor"></div>
-<nav><div class="logo">JASJEET<span>.</span></div><div><a href="#about">About</a><a href="#skills">Skills</a><a href="#work">Work</a><a href="#journey">Journey</a></div><a class="btn" href="#contact">Hire Me</a></nav>
-
+<nav><div class="logo">JASJEET<span>.</span></div><div><a href="#about">About</a><a href="#skills">Skills</a><a href="#work">Work</a><a href="#journey">Journey</a></div><div style="display:flex;gap:8px;align-items:center"><button onclick="toggleDark()" style="background:white;border:1px solid #bae6fd;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px" id="darkBtn">🌙</button><a class="btn" href="#contact">Hire Me</a></div></nav>
 <header class="hero">
 <div>
-<div class="badge">👑 AVAILABLE FOR NEW PROJECTS • Abu Dhabi • 🤖 JARVIS IS LIVE</div>
+<div class="badge">👑 AVAILABLE FOR NEW PROJECTS • Abu Dhabi • 🤖 JARVIS V5 FINAL BOSS</div>
 <h1>JASJEET<br><span>Builds The Future.</span></h1>
 <p>I'm <b id="type"></b> — I turn crazy ideas into clean, fast, beautiful websites & apps. Simple. Powerful. Unforgettable.</p>
 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a class="btn" href="#work">View My Work ↓</a><a class="btn" style="background:white;color:#0369a1" href="#contact">Let's Talk</a><button class="btn" style="background:#0c4a6e" onclick="openJarvis()">Talk to JARVIS 🤖</button></div>
+<div style="margin-top:14px;background:#fff7ed;border:1px solid #fed7aa;padding:10px 14px;border-radius:999px;display:inline-block;font-size:13px;font-weight:700;color:#9a3412">🎤 Say: "Hey Jarvis" • "Play Alan Walker" • "Email Jasjeet"</div>
 <div class="crown-box"><div class="crown">👑</div><div><b>Lil Bro of KING_YOSEF_</b><br><span style="font-size:13px;color:#64748b">Legacy runs in the blood. YOSEF built the throne. JASJEET is building the empire next.</span></div></div>
 </div>
 </header>
-
 <section id="about"><h2>About <span>Me</span></h2><p class="sub">Not just a developer. A creator with royal standards.</p>
-<div class="grid"><div class="card"><div class="icon">⚡</div><h3>Fast Learner</h3><p>I learn any stack in days. If it exists on the internet, I can build it. If it doesn't, I'll invent it.</p></div><div class="card"><div class="icon">🎨</div><h3>Design First</h3><p>Clean, elegant, sky-blue vibes. No messy UI. Every pixel has a purpose.</p></div><div class="card"><div class="icon">🤖</div><h3>AI Powered + JARVIS</h3><p>I built my own Jarvis. Click the glowing orb bottom-right and talk to him. He lives on this site.</p></div></div>
+<div class="grid"><div class="card"><div class="icon">⚡</div><h3>Fast Learner</h3><p>I learn any stack in days. If it exists on the internet, I can build it. If it doesn't, I'll invent it.</p></div><div class="card"><div class="icon">🎨</div><h3>Design First</h3><p>Clean, elegant, sky-blue vibes. No messy UI. Every pixel has a purpose.</p></div><div class="card"><div class="icon">🤖</div><h3>JARVIS V5</h3><p>Arc Reactor that pulses when he talks, sends emails, plays music. The full Iron Man suit.</p></div></div>
 <div class="stats"><div class="stat"><b><span class="count" data-target="25">0</span>+</b><span>Projects Done</span></div><div class="stat"><b><span class="count" data-target="100">0</span>%</b><span>Client Happy</span></div><div class="stat"><b><span class="count" data-target="15">0</span>+</b><span>Technologies</span></div><div class="stat"><b><span class="count" data-target="24">0</span>/7</b><span>Grinding</span></div></div>
 </section>
-
 <section id="skills"><h2>My <span>Superpowers</span></h2><p class="sub">Hover the cards — they tilt. This is real dev flex.</p>
 <div class="grid">
 <div class="card tilt"><h3>Frontend</h3><p>HTML • CSS • JavaScript • React</p><div class="skill-bar"><div class="skill-fill" data-w="95%"></div></div><small>95% — Expert</small></div>
 <div class="card tilt"><h3>Backend</h3><p>Node.js • Python • Firebase</p><div class="skill-bar"><div class="skill-fill" data-w="85%"></div></div><small>85% — Pro</small></div>
-<div class="card tilt"><h3>AI & Tools</h3><p>ChatGPT • Codex • FreeLLMAPI • Docker • JARVIS</p><div class="skill-bar"><div class="skill-fill" data-w="90%"></div></div><small>90% — Elite</small></div>
+<div class="card tilt"><h3>AI & Tools</h3><p>ChatGPT • Codex • FreeLLMAPI • Docker • JARVIS V5</p><div class="skill-bar"><div class="skill-fill" data-w="90%"></div></div><small>90% — Elite</small></div>
 <div class="card tilt"><h3>Design</h3><p>UI/UX • Figma • Animations</p><div class="skill-bar"><div class="skill-fill" data-w="88%"></div></div><small>88% — Clean</small></div>
 </div></section>
-
-<section id="work"><h2>Selected <span>Work</span></h2><p class="sub">Click to filter. Real interactive portfolio.</p>
+<section id="work"><h2>Selected <span>Work</span></h2><p class="sub">Click to filter. Or say "Jarvis, show me projects"</p>
 <div class="filter"><button class="active" onclick="filterP('all',this)">All</button><button onclick="filterP('web',this)">Web</button><button onclick="filterP('ai',this)">AI</button><button onclick="filterP('design',this)">Design</button></div>
 <div class="grid">
 <div class="card proj show web"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600"><h3>SkyShop — E-Commerce</h3><p>Full store with cart, sky-blue theme, 2s load time. Built with HTML + JS.</p><br><a href="#" style="color:#0284c7;font-weight:700">View Project →</a></div>
 <div class="card proj show ai"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600"><h3>Yosef AI Bot</h3><p>AI chatbot using FreeLLMAPI + Groq. Answers in 0.5s, costs $0.</p><br><a href="#" style="color:#0284c7;font-weight:700">View Project →</a></div>
 <div class="card proj show design"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600"><h3>Royal Brand Kit</h3><p>Complete branding for KING_YOSEF_ — logo, colors, social kit.</p><br><a href="#" style="color:#0284c7;font-weight:700">View Project →</a></div>
-<div class="card proj show web"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600"><h3>JARVIS — Web AI</h3><p>This site's Jarvis. Talks, listens, answers anything. Click the orb ↓</p><br><a href="#" onclick="openJarvis();return false;" style="color:#0284c7;font-weight:700">Talk to JARVIS →</a></div>
+<div class="card proj show web"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600"><h3>JARVIS V5 — Web AI</h3><p>Arc Reactor, email sender, music player. The final boss.</p><br><a href="#" onclick="openJarvis();return false;" style="color:#0284c7;font-weight:700">Talk to JARVIS →</a></div>
 </div></section>
-
-<section id="journey"><h2>My <span>Journey</span></h2><div class="timeline"><div><b>2024 — Started Coding</b><p style="color:#64748b">First "Hello World" — never stopped since.</p></div><div><b>2025 — Learned AI Tools</b><p style="color:#64748b">Mastered Codex, Claude, Docker, FreeLLMAPI.</p></div><div><b>2026 — Built JARVIS + Empire with KING_YOSEF_</b><p style="color:#64748b">Freelancing, building products, going viral soon.</p></div></div></section>
-
+<section id="journey"><h2>My <span>Journey</span></h2><div class="timeline"><div><b>2024 — Started Coding</b><p style="color:#64748b">First "Hello World" — never stopped since.</p></div><div><b>2025 — Learned AI Tools</b><p style="color:#64748b">Mastered Codex, Claude, Docker, FreeLLMAPI.</p></div><div><b>2026 — Built JARVIS V5 + Empire with KING_YOSEF_</b><p style="color:#64748b">Freelancing, building products, going viral soon.</p></div></div></section>
 <section id="contact"><div class="contact"><h2 style="color:white">Let's Build Something <span style="color:#bae6fd">Royal</span> 👑</h2><p style="margin:12px 0 20px;opacity:.9">Lil Bro of KING_YOSEF_ — but my work speaks for itself.</p>
 <form id="contactForm" action="https://formsubmit.co/ymite803@gmail.com" method="POST">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_subject" value="New Message from Jasjeet Portfolio!">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_next" value="https://king-yosef-0.github.io/Jasjeet-Protfolio/?sent=true">
-<input id="nameIn" name="name" placeholder="Your Name" required><br>
-<input id="emailIn" name="email" type="email" placeholder="Your Email" required><br>
-<textarea id="msgIn" name="message" rows="3" placeholder="Tell me your idea..." required></textarea><br>
+<input id="cName" name="name" placeholder="Your Name" required><br>
+<input id="cEmail" name="email" type="email" placeholder="Your Email" required><br>
+<textarea id="cMsg" name="message" rows="3" placeholder="Tell me your idea..." required></textarea><br>
 <button type="submit" class="btn" style="background:white;color:#0369a1">Send Message 🚀</button>
 </form>
 <p id="sent" style="margin-top:14px;font-weight:700"></p>
 <p style="margin-top:18px;font-size:13px">📍 Abu Dhabi • 💬 DM: @KING_YOSEF_ 's Lil Bro</p></div></section>
 <footer>Made with 💙 by <b>JASJEET</b> • Lil Bro of <b>KING_YOSEF_</b> • © 2026 All Rights Reserved</footer>
 
+<div id="nowPlaying">🎵 Now Playing...</div>
 <button id="jarvisBtn" onclick="toggleJarvis()">🤖</button>
 <div id="jarvisBox">
-  <div class="jarvisHead"><div><b>J.A.R.V.I.S.</b><br><span style="font-size:11px;opacity:.9">● Online • Jasjeet's Personal AI</span></div><button onclick="toggleJarvis()" style="background:white;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer">✕</button></div>
+  <div class="jarvisHead">
+    <div style="display:flex;gap:10px;align-items:center">
+      <div class="reactor" id="reactor"><div class="ring"></div><div class="ring2"></div><div class="core">⚡</div></div>
+      <div><b>J.A.R.V.I.S. V5</b><br><span style="font-size:11px;opacity:.9" id="jarvisStatus">● Online • Reactor Stable</span></div>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center"><button id="wakeBtn" class="wakeBtn on" onclick="toggleWake()">🎤 Wake: ON</button><button class="clearBtn" onclick="clearJarvisChat()">🗑️</button><button onclick="toggleJarvis()" style="background:white;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer">✕</button></div>
+  </div>
   <div id="jarvisChat"></div>
   <div class="jarvisQuick">
-    <button onclick="quickAsk('Who is Jasjeet?')">Who is Jasjeet?</button>
-    <button onclick="quickAsk('What time is it?')">Time?</button>
-    <button onclick="quickAsk('Tell me a joke')">Joke</button>
-    <button onclick="quickAsk('Who is KING_YOSEF_?')">KING_YOSEF_?</button>
+    <button onclick="quickAsk('Play Alan Walker')">🎵 Play Music</button>
+    <button onclick="quickAsk('Email Jasjeet I want a website')">📧 Email Jasjeet</button>
+    <button onclick="quickAsk('Dark mode')">🌙 Dark Mode</button>
+    <button onclick="quickAsk('Show me projects')">Show Projects</button>
   </div>
   <div class="jarvisInput">
     <input id="jarvisInput" placeholder="Ask Jarvis anything..." onkeydown="if(event.key==='Enter') sendToJarvis()">
@@ -142,47 +174,186 @@ function filterP(cat,btn){document.querySelectorAll('.filter button').forEach(b=
 let obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.skill-fill').forEach(f=>f.style.width=f.dataset.w);document.querySelectorAll('.count').forEach(c=>{let t=+c.dataset.target;let cur=0;let iv=setInterval(()=>{cur+=2;if(cur>=t){cur=t;clearInterval(iv)}c.textContent=cur},20)})}})},{threshold:.3});obs.observe(document.getElementById('skills'));
 if(window.location.search.includes('sent=true')){document.getElementById('sent').textContent="Message sent! 👑 Jasjeet will reply soon.";window.history.replaceState({},document.title,window.location.pathname);document.getElementById('contact').scrollIntoView({behavior:'smooth'});}
 document.getElementById('contactForm').addEventListener('submit',function(){document.getElementById('sent').textContent="Sending... ⏳";});
+function applyDark(isDark){document.body.classList.toggle('dark',isDark);document.getElementById('darkBtn').textContent=isDark?'☀️':'🌙';localStorage.setItem('jasjeet_dark',isDark?'1':'0');}
+function toggleDark(){applyDark(!document.body.classList.contains('dark'));}
+if(localStorage.getItem('jasjeet_dark')==='1') applyDark(true);
 
-// ===== JARVIS BRAIN =====
-let jarvisOpened=false;
-function openJarvis(){document.getElementById('jarvisBox').classList.add('open');if(!jarvisOpened){jarvisOpened=true;addJarvisMsg("Hello Sir. I am J.A.R.V.I.S. — Just A Rather Very Intelligent System. Built by Jasjeet, Lil Bro of KING_YOSEF_. How can I assist you today?");}}
+// ===== JARVIS V5 =====
+let jarvisOpened=false, awaitingName=false, wakeOn=true, wakeRec=null, awaitingEmail=false;
+let userName = localStorage.getItem('jarvis_name') || "";
+let chatHistory = JSON.parse(localStorage.getItem('jarvis_history') || "[]");
+function saveHistory(){localStorage.setItem('jarvis_history',JSON.stringify(chatHistory.slice(-30)));}
+function getGreeting(){if(userName) return "Welcome back, "+userName+". Reactor at 100%. Your last chat is saved. How can I assist?";return "Hello Sir. I am J.A.R.V.I.S. V5. Arc Reactor online. I don't think we've met properly yet. What's your name?";}
+function setReactor(mode){let r=document.getElementById('reactor');let s=document.getElementById('jarvisStatus');r.classList.remove('speaking','listening');if(mode==='speaking'){r.classList.add('speaking');s.textContent="● Speaking... Reactor Pulsing";}else if(mode==='listening'){r.classList.add('listening');s.textContent="● Listening... 🎤";}else{s.textContent="● Online • Reactor Stable";}}
+function openJarvis(){
+  document.getElementById('jarvisBox').classList.add('open');
+  if(!jarvisOpened){
+    jarvisOpened=true;
+    if(chatHistory.length>0){
+      chatHistory.forEach(m=>{let d=document.createElement('div');d.className='msg '+m.who;d.textContent=m.text;document.getElementById('jarvisChat').appendChild(d);});
+      document.getElementById('jarvisChat').scrollTop=document.getElementById('jarvisChat').scrollHeight;
+      let msg="Welcome back, "+(userName||"Sir")+". I saved our last chat for you.";
+      typeJarvisMsg(msg); speakJarvis(msg);
+    } else {
+      let msg=getGreeting(); typeJarvisMsg(msg); speakJarvis(msg); if(!userName) awaitingName=true;
+    }
+  }
+}
 function toggleJarvis(){let box=document.getElementById('jarvisBox');if(box.classList.contains('open')){box.classList.remove('open')}else{openJarvis()}}
-function addJarvisMsg(text,who='jarvis'){let chat=document.getElementById('jarvisChat');let div=document.createElement('div');div.className='msg '+who;div.textContent=text;chat.appendChild(div);chat.scrollTop=chat.scrollHeight;return div}
-function speakJarvis(text){try{let u=new SpeechSynthesisUtterance(text);u.rate=1;u.pitch=1;speechSynthesis.speak(u);}catch(e){}}
+function clearJarvisChat(){chatHistory=[];saveHistory();document.getElementById('jarvisChat').innerHTML='';let msg="Chat cleared, Sir. Fresh start. Like a new suit.";typeJarvisMsg(msg);speakJarvis(msg);}
+function typeJarvisMsg(fullText, save=true){
+  let chat=document.getElementById('jarvisChat');
+  let div=document.createElement('div'); div.className='msg jarvis'; chat.appendChild(div);
+  let i=0; let span=document.createElement('span'); div.appendChild(span);
+  let blink=document.createElement('span'); blink.className='cursor-blink'; div.appendChild(blink);
+  let iv=setInterval(()=>{i+=3; span.textContent=fullText.slice(0,i); chat.scrollTop=chat.scrollHeight; if(i>=fullText.length){clearInterval(iv); blink.remove(); if(save){chatHistory.push({who:'jarvis',text:fullText}); saveHistory();}}},18);
+  return div;
+}
+function addUserMsg(text){let chat=document.getElementById('jarvisChat');let div=document.createElement('div');div.className='msg user';div.textContent=text;chat.appendChild(div);chat.scrollTop=chat.scrollHeight;chatHistory.push({who:'user',text:text});saveHistory();}
+function speakJarvis(text){
+  try{
+    speechSynthesis.cancel(); setReactor('speaking');
+    let u=new SpeechSynthesisUtterance(text); u.rate=0.95; u.pitch=0.7;
+    let voices=speechSynthesis.getVoices(); let male=voices.find(v=>v.lang.startsWith('en') && (v.name.includes('David')||v.name.includes('Guy')||v.name.includes('Daniel')));
+    if(male) u.voice=male;
+    u.onend=()=>setReactor('idle'); u.onerror=()=>setReactor('idle');
+    speechSynthesis.speak(u); setTimeout(()=>setReactor('idle'), Math.min(text.length*60,8000));
+  }catch(e){setReactor('idle');}
+}
 function quickAsk(q){document.getElementById('jarvisInput').value=q;sendToJarvis();}
+function scrollToId(id){let el=document.getElementById(id);if(el) el.scrollIntoView({behavior:'smooth'});}
+function showNowPlaying(txt){let n=document.getElementById('nowPlaying');n.textContent="🎵 Now Playing: "+txt;n.style.display='block';setTimeout(()=>n.style.display='none',5000);}
+
 async function sendToJarvis(){
   let inp=document.getElementById('jarvisInput');let q=inp.value.trim();if(!q) return;
-  addJarvisMsg(q,'user');inp.value='';
-  let lower=q.toLowerCase();
-  let reply="";
-  if(lower.includes('time')){reply="Right now, Sir, it is "+new Date().toLocaleTimeString()+". Time to build the empire.";}
-  else if(lower.includes('date')){reply="Today is "+new Date().toDateString()+", Sir.";}
-  else if(lower.includes('king_yosef')||lower.includes('king yosef')||lower.includes('yosef')){reply="KING_YOSEF_ is the King. The throne builder. And Jasjeet is his lil bro — the future king building the empire next.";}
-  else if(lower.includes('jasjeet')||lower.includes('who are you')||lower.includes('about')){reply="Jasjeet is a Frontend Developer, AI Builder and UI Designer from Abu Dhabi. He builds fast, clean, sky-blue websites. Lil Bro of KING_YOSEF_. You are talking to his personal Jarvis right now.";}
-  else if(lower.includes('joke')){reply="Why did the developer go broke? Because he used up all his cache. Haha, Sir.";}
-  else if(lower.includes('open youtube')){reply="Opening YouTube for you, Sir.";window.open('https://youtube.com','_blank');}
-  else if(lower.includes('open google')){reply="Opening Google, Sir.";window.open('https://google.com','_blank');}
-  else if(lower.includes('hire')||lower.includes('contact')||lower.includes('project')){reply="Excellent choice, Sir. Scroll down to the contact form and send Jasjeet a message. He replies fast. Or DM KING_YOSEF_'s lil bro.";}
-  else if(lower.includes('hello')||lower.includes('hi')||lower.includes('hey')){reply="Hello Sir. Jarvis at your service. Ask me anything — about Jasjeet, his skills, or anything in the world.";}
-  else {
-    let thinking=addJarvisMsg("Thinking... 🤔");
-    try{
-      let res=await fetch('https://text.pollinations.ai/'+encodeURIComponent("You are Jarvis, Jasjeet's personal AI assistant. Jasjeet is Lil Bro of KING_YOSEF_, a frontend developer from Abu Dhabi. Answer short, cool, in Jarvis style. User: "+q));
-      let txt=await res.text();
-      thinking.remove();
-      reply=txt.slice(0,600);
-    }catch(e){thinking.remove();reply="My main brain is offline right now, Sir. But I can still tell you about Jasjeet, his skills, time, jokes, and open YouTube. Try asking 'Who is Jasjeet?'";}
+  addUserMsg(q);inp.value=''; let lower=q.toLowerCase();
+
+  // EMAIL FLOW - Jarvis asks for details then sends
+  if(awaitingEmail){
+    awaitingEmail=false;
+    // Use what user said as message, ask name/email if needed - we auto-fill and send
+    let msg=q; 
+    document.getElementById('cName').value=userName||"Jarvis Visitor";
+    document.getElementById('cEmail').value="visitor@jarvis.ai";
+    document.getElementById('cMsg').value="[Sent via JARVIS V5] "+msg;
+    let r="Done, "+(userName||"Sir")+". I filled the contact form and I'm sending it to Jasjeet now. He will get your message: '"+msg.slice(0,80)+"'";
+    typeJarvisMsg(r); speakJarvis(r);
+    setTimeout(()=>{scrollToId('contact'); document.getElementById('contactForm').submit();},2500);
+    return;
   }
-  addJarvisMsg(reply);
-  speakJarvis(reply);
+  if(lower.includes('email jasjeet')||lower.includes('send email')||lower.includes('message jasjeet')||lower.includes('mail jasjeet')){
+    // If message already included after "email jasjeet"
+    let extra=q.replace(/email jasjeet|send email to jasjeet|message jasjeet|mail jasjeet/gi,'').trim();
+    // Remove "that" / "i want" cleanup
+    if(extra.length>5){
+      document.getElementById('cName').value=userName||"Jarvis Visitor";
+      document.getElementById('cEmail').value="visitor@jarvis.ai";
+      document.getElementById('cMsg').value="[Sent via JARVIS V5] "+extra;
+      let r="On it, Sir. Sending this to Jasjeet now: '"+extra.slice(0,80)+"' — He will reply soon.";
+      typeJarvisMsg(r); speakJarvis(r);
+      setTimeout(()=>{scrollToId('contact'); document.getElementById('contactForm').submit();},2500);
+      return;
+    } else {
+      awaitingEmail=true;
+      let r="Of course, "+(userName||"Sir")+". What should I tell Jasjeet? Type your message — for example: 'I want a website for my shop'. I'll send it for you.";
+      typeJarvisMsg(r); speakJarvis(r); return;
+    }
+  }
+
+  // MUSIC + YOUTUBE
+  if(lower.startsWith('play ')||lower.includes('play music')||lower.includes('play song')){
+    let song=q.replace(/play /gi,'').replace(/music|song/gi,'').trim() || "Alan Walker Faded";
+    let r="Playing '"+song+"' for you, Sir. Enjoy. 🎵"; typeJarvisMsg(r); speakJarvis(r);
+    showNowPlaying(song); window.open('https://www.youtube.com/results?search_query='+encodeURIComponent(song),'_blank'); return;
+  }
+  if(lower.includes('search youtube for')||lower.includes('search on youtube')||lower.includes('youtube search')){
+    let query=q.replace(/search youtube for|search on youtube|youtube search|search youtube/gi,'').trim() || "Jasjeet";
+    let r="Searching YouTube for '"+query+"', Sir."; typeJarvisMsg(r); speakJarvis(r); window.open('https://www.youtube.com/results?search_query='+encodeURIComponent(query),'_blank'); return;
+  }
+  if(lower.includes('stop music')||lower.includes('pause music')){
+    let r="Music is on YouTube, Sir. I opened it in a new tab — you can pause it there. Or say 'Play' for a new song."; typeJarvisMsg(r); speakJarvis(r); return;
+  }
+
+  if(awaitingName && !userName){
+    let name=q.replace(/my name is|i am|i'm|call me/gi,'').trim().split(' ')[0]; name=name.charAt(0).toUpperCase()+name.slice(1);
+    userName=name; localStorage.setItem('jarvis_name',name); awaitingName=false;
+    let reply="Nice to meet you, "+name+"! I will remember you now, Sir. Try saying 'Play Alan Walker' or 'Dark mode'.";
+    typeJarvisMsg(reply); speakJarvis(reply); return;
+  }
+  if(lower.includes('my name is')||(lower.includes('i am ')&&lower.length<20)){
+    let name=q.replace(/my name is|i am|i'm/gi,'').trim().split(' ')[0]; name=name.charAt(0).toUpperCase()+name.slice(1);
+    userName=name; localStorage.setItem('jarvis_name',name);
+    let r="Updated, Sir. Hello "+name+"."; typeJarvisMsg(r); speakJarvis(r); return;
+  }
+  if(lower.includes('forget my name')){localStorage.removeItem('jarvis_name');userName="";awaitingName=true;let r="Done, Sir. I forgot your name. What's your name again?";typeJarvisMsg(r);speakJarvis(r);return;}
+  if(lower.includes('clear chat')){clearJarvisChat();return;}
+  if(lower.includes('dark mode')||lower.includes('night mode')){applyDark(true);let r="Dark mode activated, "+(userName||"Sir")+". Like the Mark VII suit at night.";typeJarvisMsg(r);speakJarvis(r);return;}
+  if(lower.includes('light mode')||lower.includes('bright mode')||lower.includes('turn off dark')){applyDark(false);let r="Light mode on, "+(userName||"Sir")+". Back to sky-blue.";typeJarvisMsg(r);speakJarvis(r);return;}
+  if((lower.includes('show')&&lower.includes('project'))||lower.includes('my work')){let r="Yes Sir. Showing projects now.";typeJarvisMsg(r);speakJarvis(r);scrollToId('work');return;}
+  if((lower.includes('show')&&lower.includes('skill'))||lower.includes('superpower')){let r="Here are Jasjeet's superpowers, Sir.";typeJarvisMsg(r);speakJarvis(r);scrollToId('skills');return;}
+  if(lower.includes('who is jasjeet')){let r="Jasjeet is a Frontend Developer, AI Builder and UI Designer from Abu Dhabi. Lil Bro of KING_YOSEF_. He builds fast, clean, sky-blue websites. And he built me.";typeJarvisMsg(r);speakJarvis(r);scrollToId('about');return;}
+  if(lower.includes('contact')||lower.includes('hire')||lower.includes('take me to contact')){let r="Taking you to contact, Sir.";typeJarvisMsg(r);speakJarvis(r);scrollToId('contact');return;}
+  if(lower.includes('journey')){let r="Showing you Jasjeet's journey, Sir.";typeJarvisMsg(r);speakJarvis(r);scrollToId('journey');return;}
+  if(lower.includes('go home')){let r="Going home, Sir.";typeJarvisMsg(r);speakJarvis(r);window.scrollTo({top:0,behavior:'smooth'});return;}
+
+  let reply="";
+  if(lower.includes('time')){reply="Right now, "+(userName||"Sir")+", it is "+new Date().toLocaleTimeString();}
+  else if(lower.includes('date')){reply="Today is "+new Date().toDateString()+", "+(userName||"Sir")+".";}
+  else if(lower.includes('king_yosef')||lower.includes('king yosef')||lower.includes('yosef')){reply="KING_YOSEF_ is the King. The throne builder. And Jasjeet is his lil bro — the future king building the empire next.";}
+  else if(lower.includes('joke')){reply="Why did the developer go broke, "+(userName||"Sir")+"? Because he used up all his cache.";}
+  else if(lower.includes('open youtube')){reply="Opening YouTube, Sir.";window.open('https://youtube.com','_blank');}
+  else if(lower.includes('open google')){reply="Opening Google, Sir.";window.open('https://google.com','_blank');}
+  else if(lower.includes('hello')||lower.includes('hi')||lower.includes('hey')){reply="Hello "+(userName||"Sir")+". Jarvis V5 at your service. Say 'Play Alan Walker' or 'Email Jasjeet'.";}
+  else if(lower.includes('thank')){reply="Always a pleasure, "+(userName||"Sir")+".";}
+  else {
+    let thinking=document.createElement('div');thinking.className='msg jarvis';thinking.textContent="Thinking... 🤔";document.getElementById('jarvisChat').appendChild(thinking);
+    try{
+      let res=await fetch('https://text.pollinations.ai/'+encodeURIComponent("You are Jarvis, Jasjeet's personal AI. User is "+(userName||"Sir")+". Jasjeet is Lil Bro of KING_YOSEF_, frontend developer from Abu Dhabi. Answer short, cool, Jarvis style. User: "+q));
+      let txt=await res.text();thinking.remove();reply=txt.slice(0,600);
+    }catch(e){thinking.remove();reply="My main brain is offline, Sir. But I can still control this site. Try 'Dark mode' or 'Play music'.";}
+  }
+  typeJarvisMsg(reply); speakJarvis(reply);
 }
 function startVoice(){
   let SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(!SR){alert("Voice works best in Chrome on Android / PC");return;}
+  if(!SR){alert("Voice works best in Chrome");return;}
+  setReactor('listening');
   let rec=new SR();rec.lang='en-US';rec.start();
-  addJarvisMsg("Listening... 🎤 Speak now Sir.");
-  rec.onresult=function(e){let txt=e.results[0][0].transcript;document.getElementById('jarvisInput').value=txt;sendToJarvis();}
+  let div=document.createElement('div');div.className='msg jarvis';div.textContent="🎤 Listening... Speak now Sir.";document.getElementById('jarvisChat').appendChild(div);
+  rec.onresult=function(e){let txt=e.results[0][0].transcript;div.remove();document.getElementById('jarvisInput').value=txt;sendToJarvis();};
+  rec.onend=()=>setReactor('idle');
 }
+function toggleWake(){
+  wakeOn=!wakeOn;let b=document.getElementById('wakeBtn');b.textContent=wakeOn?"🎤 Wake: ON":"🎤 Wake: OFF";b.classList.toggle('on',wakeOn);
+  if(wakeOn) startWakeWord(); else if(wakeRec) wakeRec.stop();
+}
+function startWakeWord(){
+  let SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR||!wakeOn) return;
+  try{
+    wakeRec=new SR();wakeRec.continuous=true;wakeRec.interimResults=true;wakeRec.lang='en-US';
+    wakeRec.onresult=function(e){
+      for(let i=e.resultIndex;i<e.results.length;i++){
+        let txt=e.results[i][0].transcript.toLowerCase();
+        if(txt.includes('hey jarvis')||txt.includes('jarvis')){
+          let box=document.getElementById('jarvisBox');
+          if(!box.classList.contains('open')){
+            openJarvis();
+            setTimeout(()=>{let msg="Yes "+(userName||"Sir")+"? I heard you.";typeJarvisMsg(msg);speakJarvis(msg);},800);
+            document.getElementById('jarvisBtn').classList.add('listening');
+            setTimeout(()=>document.getElementById('jarvisBtn').classList.remove('listening'),2000);
+            startVoice();
+          }
+          break;
+        }
+      }
+    };
+    wakeRec.onend=function(){if(wakeOn) setTimeout(startWakeWord,1000);};
+    wakeRec.onerror=function(){if(wakeOn) setTimeout(startWakeWord,2000);};
+    wakeRec.start();
+  }catch(e){}
+}
+setTimeout(()=>{if(wakeOn) startWakeWord();},1000);
 </script>
 </body>
 </html>

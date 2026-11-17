@@ -86,7 +86,11 @@ footer{text-align:center;padding:24px;color:#64748b;font-size:13px}
 <section id="journey"><h2>My <span>Journey</span></h2><div class="timeline"><div><b>2024 — Started Coding</b><p style="color:#64748b">First "Hello World" — never stopped since.</p></div><div><b>2025 — Learned AI Tools</b><p style="color:#64748b">Mastered Codex, Claude, Docker, FreeLLMAPI.</p></div><div><b>2026 — Building Empire with KING_YOSEF_</b><p style="color:#64748b">Freelancing, building products, going viral soon.</p></div></div></section>
 
 <section id="contact"><div class="contact"><h2 style="color:white">Let's Build Something <span style="color:#bae6fd">Royal</span> 👑</h2><p style="margin:12px 0 20px;opacity:.9">Lil Bro of KING_YOSEF_ — but my work speaks for itself.</p>
-<form id="contactForm">
+<form id="contactForm" action="https://formsubmit.co/ymite803@gmail.com" method="POST">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_subject" value="New Message from Jasjeet Portfolio!">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://king-yosef-0.github.io/Jasjeet-Protfolio/?sent=true">
 <input id="nameIn" name="name" placeholder="Your Name" required><br>
 <input id="emailIn" name="email" type="email" placeholder="Your Email" required><br>
 <textarea id="msgIn" name="message" rows="3" placeholder="Tell me your idea..." required></textarea><br>
@@ -103,27 +107,13 @@ document.addEventListener('mousemove',e=>{let c=document.getElementById('cursor'
 document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('mousemove',e=>{let r=card.getBoundingClientRect();let x=(e.clientX-r.left)/r.width-.5;let y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(600px) rotateY(${x*12}deg) rotateX(${-y*12}deg)`});card.addEventListener('mouseleave',()=>card.style.transform='')});
 function filterP(cat,btn){document.querySelectorAll('.filter button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.proj').forEach(p=>{p.classList.remove('show');if(cat=='all'||p.classList.contains(cat))p.classList.add('show')})}
 let obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.skill-fill').forEach(f=>f.style.width=f.dataset.w);document.querySelectorAll('.count').forEach(c=>{let t=+c.dataset.target;let cur=0;let iv=setInterval(()=>{cur+=2;if(cur>=t){cur=t;clearInterval(iv)}c.textContent=cur},20)})}})},{threshold:.3});obs.observe(document.getElementById('skills'));
-document.getElementById('contactForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-  let name = document.getElementById('nameIn').value;
-  let email = document.getElementById('emailIn').value;
-  let msg = document.getElementById('msgIn').value;
+if(window.location.search.includes('sent=true')){
+  document.getElementById('sent').textContent = "Message sent! 👑 Jasjeet will reply soon.";
+  window.history.replaceState({}, document.title, window.location.pathname);
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+}
+document.getElementById('contactForm').addEventListener('submit', function(){
   document.getElementById('sent').textContent = "Sending... ⏳";
-  try {
-    let res = await fetch('https://formsubmit.co/ajax/ymite803@gmail.com', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-      body: JSON.stringify({name: name, email: email, message: msg, _subject: 'New Portfolio Message from ' + name, _captcha: 'false'})
-    });
-    if(res.ok){
-      document.getElementById('sent').textContent = "Message sent! 👑 Jasjeet will reply soon.";
-      document.getElementById('contactForm').reset();
-    } else {
-      document.getElementById('sent').textContent = "Message sent! 👑 Jasjeet will reply soon.";
-    }
-  } catch(err) {
-    document.getElementById('sent').textContent = "Message sent! 👑 Jasjeet will reply soon.";
-  }
 });
 </script>
 </body>

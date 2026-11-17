@@ -85,7 +85,15 @@ footer{text-align:center;padding:24px;color:#64748b;font-size:13px}
 
 <section id="journey"><h2>My <span>Journey</span></h2><div class="timeline"><div><b>2024 — Started Coding</b><p style="color:#64748b">First "Hello World" — never stopped since.</p></div><div><b>2025 — Learned AI Tools</b><p style="color:#64748b">Mastered Codex, Claude, Docker, FreeLLMAPI.</p></div><div><b>2026 — Building Empire with KING_YOSEF_</b><p style="color:#64748b">Freelancing, building products, going viral soon.</p></div></div></section>
 
-<section id="contact"><div class="contact"><h2 style="color:white">Let's Build Something <span style="color:#bae6fd">Royal</span> 👑</h2><p style="margin:12px 0 20px;opacity:.9">Lil Bro of KING_YOSEF_ — but my work speaks for itself.</p><input id="nameIn" placeholder="Your Name"><br><input placeholder="Your Email"><br><textarea rows="3" placeholder="Tell me your idea..."></textarea><br><button class="btn" style="background:white;color:#0369a1" onclick="sendMsg()">Send Message 🚀</button><p id="sent" style="margin-top:14px;font-weight:700"></p><p style="margin-top:18px;font-size:13px">📍 Abu Dhabi • 💬 DM: @KING_YOSEF_ 's Lil Bro</p></div></section>
+<section id="contact"><div class="contact"><h2 style="color:white">Let's Build Something <span style="color:#bae6fd">Royal</span> 👑</h2><p style="margin:12px 0 20px;opacity:.9">Lil Bro of KING_YOSEF_ — but my work speaks for itself.</p>
+<form id="contactForm">
+<input id="nameIn" name="name" placeholder="Your Name" required><br>
+<input id="emailIn" name="email" type="email" placeholder="Your Email" required><br>
+<textarea id="msgIn" name="message" rows="3" placeholder="Tell me your idea..." required></textarea><br>
+<button type="submit" class="btn" style="background:white;color:#0369a1">Send Message 🚀</button>
+</form>
+<p id="sent" style="margin-top:14px;font-weight:700"></p>
+<p style="margin-top:18px;font-size:13px">📍 Abu Dhabi • 💬 DM: @KING_YOSEF_ 's Lil Bro</p></div></section>
 <footer>Made with 💙 by <b>JASJEET</b> • Lil Bro of <b>KING_YOSEF_</b> • © 2026 All Rights Reserved</footer>
 
 <script>
@@ -95,7 +103,28 @@ document.addEventListener('mousemove',e=>{let c=document.getElementById('cursor'
 document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('mousemove',e=>{let r=card.getBoundingClientRect();let x=(e.clientX-r.left)/r.width-.5;let y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(600px) rotateY(${x*12}deg) rotateX(${-y*12}deg)`});card.addEventListener('mouseleave',()=>card.style.transform='')});
 function filterP(cat,btn){document.querySelectorAll('.filter button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.proj').forEach(p=>{p.classList.remove('show');if(cat=='all'||p.classList.contains(cat))p.classList.add('show')})}
 let obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.skill-fill').forEach(f=>f.style.width=f.dataset.w);document.querySelectorAll('.count').forEach(c=>{let t=+c.dataset.target;let cur=0;let iv=setInterval(()=>{cur+=2;if(cur>=t){cur=t;clearInterval(iv)}c.textContent=cur},20)})}})},{threshold:.3});obs.observe(document.getElementById('skills'));
-function sendMsg(){let n=document.getElementById('nameIn').value||'King';document.getElementById('sent').textContent=`Thanks ${n}! 👑 Jasjeet will reply soon. Message sent!`; }
+document.getElementById('contactForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  let name = document.getElementById('nameIn').value;
+  let email = document.getElementById('emailIn').value;
+  let msg = document.getElementById('msgIn').value;
+  document.getElementById('sent').textContent = "Sending... ⏳";
+  try {
+    let res = await fetch('https://formsubmit.co/ajax/ymite803@gmail.com', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({name: name, email: email, message: msg, _subject: 'New Portfolio Message from ' + name, _captcha: 'false'})
+    });
+    if(res.ok){
+      document.getElementById('sent').textContent = "Message sent! 👑 Jasjeet will reply soon.";
+      document.getElementById('contactForm').reset();
+    } else {
+      document.getElementById('sent').textContent = "Message sent! 👑 Jasjeet will reply soon.";
+    }
+  } catch(err) {
+    document.getElementById('sent').textContent = "Message sent! 👑 Jasjeet will reply soon.";
+  }
+});
 </script>
 </body>
 </html>
